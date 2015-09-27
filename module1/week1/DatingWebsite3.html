@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>DatingWebstie3</title>
+<style>
+fieldset {
+  background: lightyellow;
+  border: 10px solid yellow;
+  margin-bottom: 10px;
+  width: 720px
+}
+
+input {
+  margin-bottom: 5px;
+}
+
+label {
+  width: 180px;
+  display: inline-block;
+  text-align: right;
+  text-align: top;
+}
+
+#checkboxlabel {
+  width: auto
+}
+
+#colorred {
+  background: red;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+#colorpurple {
+  background: purple;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+label:hover {
+  font-size: 25px
+}
+
+input:hover {
+  font-size: 25px
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+</head>
+<script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+<body>
+  <h1>Please Enter Your Details For Our Dating Site</h1>
+  <form name="datingWebsite" action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php"
+    enctype=multipart/form-data>
+    <fieldset>
+      <legend>Your Face</legend>
+      <label for="imgfile"> Your Image :</label> <input type="file" required name="imgfile" /><br>
+      <label for="imgpreview"> Image Preview :</label> <img id="preview" name="imgpreview" /><br>
+    </fieldset>
+    <fieldset>
+      <legend>Your General Details</legend>
+      <label for="name"> Name:</label> <input type="text" name="name" required /><br> <label
+        for="gender"> Gender:</label> <input type="radio" name="gender" required value="male">Male
+      <input type="radio" name="gender" value="female">Female <br> <label for="age">Age:
+      </label> <input type="number" name="age" min="0" max="99" required><br> <label for="dob">Date
+        of Birth:</label> <input type="date" name="dob"><br> <label for="color">Favorite
+        Color:</label> <input type="color" name="color"><br> <label for="country">Which
+        Country:</label> <select name="country" name="country">
+        <option selected />
+        <option value="Afganistan">Afghanistan</option>
+        <option value="Bangladesh">Bangladesh</option>
+        <option value="colombia">Bangladesh</option>
+        <option value="Hawaii">Hawaii</option>
+        <option value="India">India</option>
+        <option value="United States of America">United States of America</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <legend>Your Indicators</legend>
+      <label for="height">Height: </label> <span id="colorred"> Short</span><input id="range"
+        type="range" name="height" min="0" max="100" /><span id="colorpurple">Tall</span><br>
+      <label for="salary">Salary: </label> <span id="colorred">Poor</span><input id="range"
+        type="range" name="salary" min="0" max="100" /><span id="colorpurple">Rich</span><br>
+    </fieldset>
+    <fieldset>
+      <legend>Your Contact Information</legend>
+      <label for="email">Email:</label> <input type="email" style="background: pink" name="email"
+        required /><br> <label for="phone"> Mobile:</label> <input type="tel" name="phone" /><br>
+      <label for="address">Address:</label> <input type="textarea"
+        style="width: 360px; height: 50px" name="address" /><br> <label for="tocontact">
+        Method to contact you:</label> <input type="checkbox" name="tocontact" value="Email" /> <label
+        for="tocontactemail" id="checkboxlabel"> Email</label> <input type="checkbox"
+        name="tocontact" value="Whatsapp" /> <label for="tocontactwhatsapp" id="checkboxlabel">
+        Whatsapp</label> <input type="checkbox" name="tocontact" value="In-app chat" /> <label
+        for="toconatctchat" id="checkboxlabel">In-app chat</label> <br>
+    </fieldset>
+    <br> <input type="submit">
+  </form>
+</body>
+</html>
