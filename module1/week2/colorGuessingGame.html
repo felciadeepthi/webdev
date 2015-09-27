@@ -1,87 +1,49 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<title>ColorGuessingGame</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-</head>
-<script type="text/javascript">
-	var color = [ "Aqua", "Black", "Blue", "Gold", "Maron", "Lime", "Indigo",
-			"Chocolate", "Pink", "Silver", "Yellow", "White" ];
-	
-	var target_index;
-	var target;
-	finished = false;
-	var noOfGuesses = 0;
-	var guess_input;
-	function do_game() {
-	    color = color.sort();
-		target_index = Math.floor(Math.random() * color.length);
-		target = color[target_index - 1];
-		alert("Machine guessed color" + target)
-		while (!finished) {
+  <title>ColorGuessingGame</title>
+  <script>
+    var color = ["aqua", "black", "blue", "gold", "maron", "lime", "indigo", "chocolate", "pink", "silver", "yellow", "white"].sort();
+    var target_index;
+    var target;
+    var finished = false;
+    var noOfGuesses = 0;
+    var guess_input;
 
-			guess_input = prompt("I am thinking one of these colors" + "\n\n\n"
-					+ color + "\n\n\n" + "What color am I thinking of ? ")
-			alert("your guessed input " + guess_input);
-			noOfGuesses = noOfGuesses + 1;
-			if(noOfGuesses == 5){
-			break;
-			}
-			finished = check_color();
-		}
-	}
-
-	function check_color() {
-		if (!isNaN(guess_input)) {
-			//alert("Sorry , I don't recognize your color " + "\n\n\n"
-			//		+ "Please try again")
-			document.getElementById("demo").innerHTML="Sorry , I don't recognize your color" + guess_input+ " "  + target ;
-			return false;
-		}
-		else if (!contains(color,guess_input)) {
-		//	alert("Sorry , I don't recognize your color " + "\n\n\n"
-		//			+ "Please try again")
-		document.getElementById("demo").innerHTML="Sorry 1 , I don't recognize your color" + guess_input+ " "  + target ;
-			return false;
-		}
-		else if(guess_input ===  target){
-		    <!-- alert("Congragulations!you have guessed the color!" +"\n\n\n"+
-		//	"It took "+noOfGuesses+" guesses to finish the game!"+ "\n\n\n"+
-		//	"you can see color in background"); -->
-	    //		document.getElementsByTagName("body")[0].style.background=guess_input;
-		document.getElementById("demo").innerHTML="Congragulations!you have guessed the color " + guess_input + " " + target ;
-			return true;
-		}
-		else if(guess_input >  target){
-		 <!-- alert("Sorry , your guess is not correct! " + "\n\n\n"
-		//			+ "Hint:your color is alphabetically higher than mine") -->
-		document.getElementById("demo").innerHTML="your color is alphabetically higher than mine " + guess_input + " " + target ;
-			return false;
-		}
-		else{
-		//alert("Sorry , your guess is not correct! " + "\n\n\n"
-		//			+ "Hint:your color is alphabetically lower than mine")
-		document.getElementById("demo").innerHTML="your color is alphabetically lower than mine " + guess_input + " " + target ;
-			return false;
-		}
-		alert("default")
-		
-		return true;
-			
-	}
-  
-  function contains(array, str) {
-  
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].toUpperCase() === str.toUpperCase()) {
-		
-            return true;
-        }
+    function do_game() {
+      target_index = Math.floor(Math.random() * color.length) - 1;
+      target = color[target_index];
+      alert("Machine guessed color " + target)
+      while (!finished) {
+        guess_input = prompt("I am thinking one of these colors" + "\n\n\n" + color + "\n\n\n" + "What color am I thinking of ? ")
+        noOfGuesses = noOfGuesses + 1;
+        finished = check_color();
+      }
     }
-    return false;
-}
-</script>
+
+    function check_color() {
+      if (!isNaN(guess_input) || !contains(color, guess_input)) {
+        alert("Sorry , I don't recognize your color " + "\n\n\n" + "Please try again")
+      } else if (guess_input === target) {
+        document.getElementsByTagName("body")[0].style.background = guess_input;
+        alert("Congragulations!you have guessed the color!" + "\n\n\n" + "It took " + noOfGuesses + " guesses to finish the game!" + "\n\n\n" + "you can see color in background");
+        return true;
+      } else if (guess_input > target) {
+        alert("Sorry , your guess is not correct! " + "\n\n\n" + "Hint: your color is alphabetically higher than mine")
+      } else {
+        alert("Sorry , your guess is not correct! " + "\n\n\n" + "Hint: your color is alphabetically lower than mine")
+      }
+      return false;
+    }
+
+    function contains(colorarray, str) {
+      return (colorarray.indexOf(str) > -1);
+    }
+  </script>
+</head>
+
 <body onload="do_game()">
-  <p id="demo"></p>
 </body>
+
 </html>
