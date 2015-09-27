@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>ColorGuessingGame</title>
+  <script>
+    var color = ["aqua", "black", "blue", "gold", "maron", "lime", "indigo", "chocolate", "pink", "silver", "yellow", "white"].sort();
+    var target_index;
+    var target;
+    var guess_input;
+
+    function do_game() {
+      color = color.sort();
+      target_index = Math.floor(Math.random() * color.length) - 1;
+      target = color[target_index];
+      alert("Machine guessed color " + target)
+      do {
+        guess_input = prompt("I am thinking one of these colors" + "\n\n\n" + color + "\n\n\n" + "What color am I thinking of ? ")
+      } while (guess_input !== target);
+    }
+  </script>
+</head>
+
+<body onload="do_game()">
+</body>
+
+</html>
