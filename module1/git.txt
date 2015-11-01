@@ -1,0 +1,11 @@
+#SOURCE MACHINE
+git add <directory>
+git commit -m "MESSAGE"
+git push
+
+#TARGET MACHINE
+goto the directory (C:\work\repo\webdev\)
+git pull
+
+#Status
+git statusco
