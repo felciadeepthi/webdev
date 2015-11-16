@@ -12,6 +12,11 @@
   <link href="css/mystyles.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap-social.css" rel="stylesheet">
+  <style>
+    label.btn > input[type='radio'] {
+      display: none;
+    }
+  </style>
 
 </head>
 
@@ -111,7 +116,7 @@
 
             <div class="form-group">
               <label class="col-md-2 control-label">Section </label>
-              <div class="btn-group col-md-10 col-xs-12" id="reserveSection" data-toggle="buttons">
+              <div class="btn-group col-md-10 col-xs-12" id="reserveSection">
                 <label class="btn btn-success active">
                   <input type="radio" name="options" id="option1" autocomplete="off" checked> Non Smoking
                 </label>
@@ -138,7 +143,7 @@
             <div class="form-group">
               <div class="col-md-offset-2 col-sm-12">
                 <button type="submit" class="btn btn-primary">Reserve</button>
-                <button type="button" class="btn btn-default btn-sm" id="reserveCancel" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-default btn-sm" id="reserveCancel">Cancel</button>
               </div>
             </div>
 
@@ -146,8 +151,8 @@
           <div>
             <p style="padding:5px;"></p>
           </div>
-          <div class="alert alert-warning alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <div id="reserveWarndiv" class="alert alert-warning alert-dismissible" role="alert">
+            <button id="reserveWarn" type="button" class="close" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
             <strong>Warning</strong>: Please
@@ -385,8 +390,13 @@
       //reserveatable
       $("#reserveTableClick").click(function () {
         $("#reserveatable").modal('show');
-        $("#option1").button('toggle');
-        $("#option2").button('toggle');
+      });
+
+      $("option1").click(function () {
+        $(this).button('toggle');
+      });
+      $("option2").click(function () {
+        $(this).button('toggle');
       });
 
       //reserveClose
@@ -394,8 +404,12 @@
         $("#reserveatable").modal('hide');
       });
       //reserveCancel
-      $("#reserveClose").click(function () {
-        $("#reserveCancel").modal('hide');
+      $("#reserveCancel").click(function () {
+        $("#reserveatable").modal('hide');
+      });
+      //reserveWarn
+      $("#reserveWarn").click(function () {
+        $("#reserveWarndiv").alert("close");
       });
 
     });
