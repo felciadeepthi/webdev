@@ -54,10 +54,13 @@
       <h2>Corporate Leadership</h2>
       <ul class="media-list">
         <li class="media" ng-repeat="leader in leaders">
-          <div class="media ">
+          <div ng-if="!showleaders">
+            <h3>{{message}}</h3>
+          </div>
+          <div class="media " ng-if="showleaders">
             <div class="media-left media-middle ">
               <a href="#">
-                <img class="media-object img-thumbnail " src="{{leader.image}} " alt="Alberto Somayya ">
+                <img class="media-object img-thumbnail " ng-src="{{leader.image}} " alt="Alberto Somayya ">
               </a>
             </div>
             <div class="media-body ">
